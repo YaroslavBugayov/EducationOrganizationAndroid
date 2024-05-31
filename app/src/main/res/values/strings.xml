@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">EducationOrganizationApp</string>
+    <string name="title_activity_teacher">TeacherActivity</string>
+    <string name="title_activity_student">StudentActivity</string>
+</resources>
