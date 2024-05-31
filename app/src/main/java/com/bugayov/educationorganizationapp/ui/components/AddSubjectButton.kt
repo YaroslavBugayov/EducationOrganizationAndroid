@@ -13,14 +13,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
-@Preview(
-    showBackground = true,
-)
 @Composable
-fun AddSubjectButton() {
+fun AddSubjectButton(onClick: () -> Unit) {
     Box(modifier = Modifier.fillMaxWidth().padding(start = 10.dp, bottom = 10.dp, end = 10.dp)) {
         FilledTonalButton(
-            onClick = { /*TODO*/ },
+            onClick = onClick,
             modifier = Modifier.align(Alignment.CenterEnd)
         ) {
             Icon(

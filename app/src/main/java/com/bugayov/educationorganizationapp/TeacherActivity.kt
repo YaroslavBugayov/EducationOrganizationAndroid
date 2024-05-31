@@ -1,5 +1,6 @@
 package com.bugayov.educationorganizationapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -24,6 +25,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -54,8 +56,12 @@ fun LoginScreen() {
         mutableStateOf("")
     }
 
+    val context = LocalContext.current
+
     EducationOrganizationAppTheme {
-        NavigationMenu("Login")
+        NavigationMenu("Login", onClick = {
+            context.startActivity(Intent(context, MainActivity::class.java))
+        })
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,

@@ -8,6 +8,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
+        buildConfigField("String", "API_BASE_URL", "\"http://192.168.31.210:3000/api/\"")
         applicationId = "com.bugayov.educationorganizationapp"
         minSdk = 24
         targetSdk = 34
@@ -35,6 +36,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -47,7 +49,10 @@ android {
 }
 
 dependencies {
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
 
+    implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

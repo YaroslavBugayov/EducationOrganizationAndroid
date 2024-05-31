@@ -1,5 +1,6 @@
 package com.bugayov.educationorganizationapp.ui.components
 
+import android.content.Context
 import android.content.Intent
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -15,19 +16,12 @@ import androidx.compose.ui.unit.sp
 import com.bugayov.educationorganizationapp.MainActivity
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Preview(
-    showBackground = true,
-)
 @Composable
-fun NavigationMenu(title: String = "") {
-    val context = LocalContext.current
-
+fun NavigationMenu(title: String = "", onClick: () -> Unit) {
     TopAppBar(
         navigationIcon = {
             IconButton(
-                onClick = {
-                    context.startActivity(Intent(context, MainActivity::class.java))
-                }
+                onClick = onClick
             ) {
                 Icon(imageVector = Icons.Default.ArrowBack, contentDescription = null)
             }
