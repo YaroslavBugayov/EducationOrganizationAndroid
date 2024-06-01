@@ -1,4 +1,4 @@
-package com.bugayov.educationorganizationapp.retrofit.dtos
+package com.bugayov.educationorganizationapp.models
 
 import java.util.Date
 

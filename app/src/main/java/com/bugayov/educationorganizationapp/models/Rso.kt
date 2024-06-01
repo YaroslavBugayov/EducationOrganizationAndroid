@@ -1,4 +1,4 @@
-package com.bugayov.educationorganizationapp.retrofit.dtos
+package com.bugayov.educationorganizationapp.models
 
 data class Rso(
     val id: Int,
