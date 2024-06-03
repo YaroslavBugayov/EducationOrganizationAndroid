@@ -2,6 +2,7 @@ package com.bugayov.educationorganizationapp.ui.components
 
 import android.util.Log
 import androidx.compose.foundation.ScrollState
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,6 +17,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedButton
@@ -27,6 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.bugayov.educationorganizationapp.models.PostText
 import com.bugayov.educationorganizationapp.models.SearchSubjectsResponse
 import com.bugayov.educationorganizationapp.models.Subject
@@ -42,31 +45,42 @@ fun SubjectsList(
     subjectModels: SearchSubjectsResponse,
     subjectDao: SubjectDao,
     buttonState: CardButtonState,
+    navController: NavController,
     removeCallback: () -> Unit = {}
 ) {
     val scope = rememberCoroutineScope()
 
     Box(modifier = modifier.fillMaxWidth()) {
         if (subjectModels.subjects.isNotEmpty()) {
-            Log.d("Subject", "Test")
             Column(modifier = Modifier
                 .padding(10.dp)
                 .fillMaxWidth()
                 .verticalScroll(state = ScrollState(0))
             ) {
                 subjectModels.subjects.forEach {
-                    SubjectCard(it, scope, subjectDao, buttonState, removeCallback)
+                    SubjectCard(it, scope, subjectDao, buttonState, navController, removeCallback)
                 }
             }
         }
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SubjectCard(subject: Subject, scope: CoroutineScope, subjectDao: SubjectDao, buttonState: CardButtonState, removeCallback: () -> Unit) {
+fun SubjectCard(
+    subject: Subject,
+    scope: CoroutineScope,
+    subjectDao: SubjectDao,
+    buttonState: CardButtonState,
+    navController: NavController,
+    removeCallback: () -> Unit
+) {
     OutlinedCard(modifier = Modifier
         .fillMaxWidth()
-        .padding(bottom = 10.dp)) {
+        .padding(bottom = 10.dp),
+        onClick = {
+            navController.navigate("subjectScreen/${subject.id}")
+        }) {
         Row {
             Column(modifier = Modifier.weight(1F)){
                 Text(
