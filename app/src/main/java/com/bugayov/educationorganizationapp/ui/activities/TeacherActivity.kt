@@ -1,4 +1,4 @@
-package com.bugayov.educationorganizationapp
+package com.bugayov.educationorganizationapp.ui.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -44,14 +44,8 @@ class TeacherActivity : ComponentActivity() {
     )
 @Composable
 fun LoginScreen() {
-    var login: String by rememberSaveable {
-        mutableStateOf("")
-    }
-
-    var password: String by rememberSaveable {
-        mutableStateOf("")
-    }
-
+    var login: String by rememberSaveable { mutableStateOf("") }
+    var password: String by rememberSaveable { mutableStateOf("") }
     val context = LocalContext.current
 
     EducationOrganizationAppTheme {
@@ -70,20 +64,14 @@ fun LoginScreen() {
                 fontSize = 20.sp,
                 modifier = Modifier.align(Alignment.Start)
             )
-            OutlinedTextField(
-                value = login,
-                onValueChange = { login = it }
-            )
+            OutlinedTextField(value = login, onValueChange = { login = it })
             Spacer(modifier = Modifier.height(10.dp))
             Text(
                 text = "Password:",
                 fontSize = 20.sp,
                 modifier = Modifier.align(Alignment.Start)
             )
-            OutlinedTextField(
-                value = password,
-                onValueChange = { password = it }
-            )
+            OutlinedTextField(value = password, onValueChange = { password = it })
             Spacer(modifier = Modifier.height(10.dp))
             Button(onClick = { /*TODO*/ }) {
                 Text(

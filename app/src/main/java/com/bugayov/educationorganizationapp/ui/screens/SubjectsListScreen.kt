@@ -12,7 +12,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
-import com.bugayov.educationorganizationapp.MainActivity
+import com.bugayov.educationorganizationapp.ui.activities.MainActivity
 import com.bugayov.educationorganizationapp.models.SearchSubjectsResponse
 import com.bugayov.educationorganizationapp.models.Subject
 import com.bugayov.educationorganizationapp.storage.SubjectDao
